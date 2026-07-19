@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>작품 갤러리 | 아트그리고 화실</title>
+<meta name="description" content="아트그리고 화실 수강생 작품 갤러리. 유화, 아크릴화, 기초소묘, 팝아트 초상화, 전시반 작품.">
+
+<!-- 웹폰트 (메인 페이지와 동일) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+/* ============================================================
+   디자인 토큰 - 메인 페이지와 동일
+   ============================================================ */
+:root{
+  --bg:        #ffffff;
+  --bg-soft:   #f3f6f3;
+  --ink:       #222b26;
+  --ink-soft:  #66716b;
+  --accent:    #2f5d46;
+  --accent-deep:#234736;
+  --gold:      #8fb3a0;
+  --line:      #e4e9e5;
+  --white:     #ffffff;
+  --serif: 'Noto Serif KR', serif;
+  --sans:  'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  --side-pad: clamp(20px, 5vw, 48px);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  font-family:var(--sans);
+  background:var(--bg); color:var(--ink);
+  line-height:1.75; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+.container{ max-width:1120px; margin:0 auto; padding:0 var(--side-pad); }
+
+/* ============================================================
+   상단 바
+   ============================================================ */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1120px; margin:0 auto; padding:0 var(--side-pad);
+  height:60px; display:flex; align-items:center; justify-content:space-between;
+}
+.back-link{
+  display:flex; align-items:center; gap:8px;
+  font-size:14px; font-weight:600; color:var(--ink-soft); min-height:44px;
+}
+.back-link:hover{ color:var(--accent); }
+.topbar .logo{ font-family:var(--serif); font-size:17px; font-weight:600; }
+.topbar .logo em{ font-style:normal; color:var(--accent); }
+
+/* ============================================================
+   페이지 헤더
+   ============================================================ */
+.page-head{ padding:130px 0 40px; }
+.page-head .eng{
+  font-size:12px; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--accent); font-weight:600; display:block; margin-bottom:12px;
+}
+.page-head h1{
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(30px,6vw,44px); line-height:1.4; margin-bottom:12px;
+}
+.page-head p{ color:var(--ink-soft); font-size:15px; max-width:520px; }
+
+/* ============================================================
+   재료별 탭
+   ============================================================ */
+.tabs{
+  display:flex; gap:8px; flex-wrap:wrap;
+  padding:24px 0;
+  position:sticky; top:60px; z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+}
+.tab{
+  padding:10px 20px; min-height:44px;
+  border:1px solid var(--line); border-radius:999px;
+  background:var(--white); font-size:14px; font-weight:600;
+  color:var(--ink-soft);
+  transition:all .2s;
+}
+.tab:hover{ border-color:var(--accent); color:var(--accent); }
+.tab.active{ background:var(--accent); border-color:var(--accent); color:var(--white); }
+.tab .cnt{ font-size:12px; opacity:.7; margin-left:4px; }
+
+/* ============================================================
+   작품 그리드
+   ============================================================ */
+.grid{
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:14px; padding-bottom:40px;
+}
+@media (min-width:700px){ .grid{ grid-template-columns:repeat(3,1fr); gap:18px; } }
+@media (min-width:1000px){ .grid{ grid-template-columns:repeat(4,1fr); } }
+
+.art-frame{
+  background:var(--white);
+  padding:8px;
+  border:1px solid var(--line);
+  box-shadow:0 8px 20px rgba(34,43,38,.06);
+  cursor:zoom-in;
+  transition:transform .3s;
+}
+.art-frame:hover{ transform:scale(1.02); }
+.art-frame img{
+  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+}
+
+/* 비어있는 카테고리 안내 */
+.empty{
+  padding:80px 20px; text-align:center;
+  color:var(--ink-soft); font-size:15px;
+  background:var(--bg-soft); border-radius:16px;
+  margin-bottom:40px;
+}
+.empty .big{ font-size:34px; display:block; margin-bottom:12px; }
+
+/* 더보기 버튼 */
+.more-wrap{ text-align:center; padding-bottom:80px; }
+.btn-more{
+  padding:14px 36px; min-height:48px;
+  border:1px solid var(--line); border-radius:999px;
+  background:var(--white); font-size:15px; font-weight:600;
+  transition:all .2s;
+}
+.btn-more:hover{ border-color:var(--accent); color:var(--accent); }
+.btn-more[hidden]{ display:none; }
+
+/* ============================================================
+   라이트박스 (사진 크게 보기)
+   ============================================================ */
+.lightbox{
+  position:fixed; inset:0; z-index:200;
+  background:rgba(20,26,22,.94);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:24px;
+}
+.lightbox.open{ display:flex; }
+.lightbox img{
+  max-width:100%; max-height:86vh; object-fit:contain;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.lb-close{
+  position:absolute; top:16px; right:16px;
+  width:48px; height:48px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.12); color:#fff; font-size:22px;
+}
+.lb-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:48px; height:48px; border:none; border-radius:50%;
+  background:rgba(255,255,255,.12); color:#fff; font-size:20px;
+}
+.lb-prev{ left:12px; } .lb-next{ right:12px; }
+
+footer{
+  background:var(--ink); color:#93a49a;
+  padding:40px 0; font-size:13px; text-align:center;
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html#gallery" class="back-link">← 홈으로 돌아가기</a>
+    <a href="index.html" class="logo">아트<em>그리고</em> 화실</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <span class="eng">Student Gallery</span>
+      <h1>수강생 작품 갤러리</h1>
+      <p>모두 그림이 처음이었던 분들의 작품입니다. 재료별로 골라 감상해 보세요.</p>
+    </div>
+
+    <!-- 재료별 탭: JS가 채움 -->
+    <div class="tabs" id="tabs" role="tablist"></div>
+
+    <!-- 작품 그리드: JS가 채움 -->
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <span class="big">🎨</span>
+      아직 준비 중인 갤러리입니다.<br>작품이 차곡차곡 채워질 예정이에요.
+    </div>
+    <div class="more-wrap">
+      <button class="btn-more" id="btnMore" hidden>더보기</button>
+    </div>
+  </div>
+</main>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="닫기">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="이전 작품">‹</button>
+  <img id="lbImg" src="" alt="작품 크게 보기">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="다음 작품">›</button>
+</div>
+
+<footer>
+  <p>아트그리고 화실 · 인천광역시 부평구 길주로547번길 5, 401호 · 0507-1322-5279</p>
+</footer>
+
+<script>
+/* ============================================================
+   갤러리 데이터
+   - 새 작품을 추가하려면 해당 재료 배열에 파일 경로만 추가하면 됩니다
+   - 사진 파일은 재료명 폴더(유화/, 아크릴/ 등)에 넣어 관리
+   ============================================================ */
+const GALLERY = {
+  '유화': [
+    '유화/20241217_150544.jpg',
+    '유화/20241108_210557.jpg',
+    '유화/20241127_175038.jpg',
+    '유화/20241106_190227.jpg'
+  ],
+  '아크릴화': [],
+  '기초소묘': [],
+  '팝아트 초상화': [],
+  '전시반': []
+};
+
+const PER_PAGE = 20;               /* 항목당 한 번에 보여줄 사진 수 */
+let current = Object.keys(GALLERY)[0];   /* 현재 선택된 재료 */
+let shown = PER_PAGE;              /* 현재까지 펼쳐진 개수 */
+
+const tabsEl  = document.getElementById('tabs');
+const gridEl  = document.getElementById('grid');
+const emptyEl = document.getElementById('empty');
+const moreBtn = document.getElementById('btnMore');
+
+/* 탭 버튼 생성 */
+Object.entries(GALLERY).forEach(([name, list]) => {
+  const b = document.createElement('button');
+  b.className = 'tab' + (name === current ? ' active' : '');
+  b.setAttribute('role', 'tab');
+  b.innerHTML = name + (list.length ? `<span class="cnt">${list.length}</span>` : '');
+  b.addEventListener('click', () => {
+    current = name; shown = PER_PAGE;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    b.classList.add('active');
+    render();
+  });
+  tabsEl.appendChild(b);
+});
+
+/* 현재 탭의 작품을 그리드에 그리기 */
+function render(){
+  const list = GALLERY[current];
+  gridEl.innerHTML = '';
+  emptyEl.hidden = list.length > 0;
+
+  list.slice(0, shown).forEach((src, i) => {
+    const f = document.createElement('figure');
+    f.className = 'art-frame';
+    f.innerHTML = `<img src="${src}" alt="${current} 수강생 작품 ${i+1}" loading="lazy">`;
+    f.addEventListener('click', () => openLightbox(i));
+    gridEl.appendChild(f);
+  });
+
+  /* 20개 넘게 남아있으면 더보기 버튼 표시 */
+  moreBtn.hidden = list.length <= shown;
+}
+moreBtn.addEventListener('click', () => { shown += PER_PAGE; render(); });
+render();
+
+/* ============================================================
+   라이트박스: 사진 클릭 시 크게 보기 + 이전/다음 넘기기
+   ============================================================ */
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let lbIndex = 0;
+
+function openLightbox(i){
+  lbIndex = i;
+  lbImg.src = GALLERY[current][lbIndex];
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function step(d){
+  const list = GALLERY[current];
+  lbIndex = (lbIndex + d + list.length) % list.length;
+  lbImg.src = list[lbIndex];
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); step(1); });
+lb.addEventListener('click', e => { if(e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') step(-1);
+  if(e.key === 'ArrowRight') step(1);
+});
+</script>
+
+</body>
+</html>
