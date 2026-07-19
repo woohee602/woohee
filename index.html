@@ -457,6 +457,11 @@ section{ padding: var(--section-pad) 0; }
   transition:transform .3s;
 }
 .art-frame:hover{ transform:scale(1.02) rotate(.3deg); }
+.art-frame img.art{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;          /* 액자에 꽉 차게, 비율 유지 */
+}
 .art-frame .art{
   aspect-ratio:4/5;
   display:flex; align-items:center; justify-content:center;
@@ -957,10 +962,10 @@ footer p{ margin-bottom:4px; }
 
     <!-- 실제 작품 사진으로 교체할 자리입니다 -->
     <div class="gallery-grid">
-      <figure class="art-frame reveal d1"><div class="art a1">작품 사진<br>교체 예정</div><figcaption>유화 · 수강 6개월</figcaption></figure>
-      <figure class="art-frame reveal d2"><div class="art a2">작품 사진<br>교체 예정</div><figcaption>아크릴 · 수강 3개월</figcaption></figure>
-      <figure class="art-frame reveal d3"><div class="art a3">작품 사진<br>교체 예정</div><figcaption>유화 · 수강 1년</figcaption></figure>
-      <figure class="art-frame reveal d1"><div class="art a4">작품 사진<br>교체 예정</div><figcaption>팝아트 초상화</figcaption></figure>
+      <figure class="art-frame reveal d1"><img class="art" src="유화/20241217_150544.jpg" alt="분홍 목단꽃 유화 작품" loading="lazy"><figcaption>유화 · 수강생 작품</figcaption></figure>
+      <figure class="art-frame reveal d2"><img class="art" src="유화/20241108_210557.jpg" alt="흰 꽃 정물 유화 작품" loading="lazy"><figcaption>유화 · 수강생 작품</figcaption></figure>
+      <figure class="art-frame reveal d3"><img class="art" src="유화/20241127_175038.jpg" alt="신문 읽는 여인 유화 작품" loading="lazy"><figcaption>유화 · 수강생 작품</figcaption></figure>
+      <figure class="art-frame reveal d1"><img class="art" src="유화/20241106_190227.jpg" alt="해변의 복어 유화 작품" loading="lazy"><figcaption>유화 · 수강생 작품</figcaption></figure>
       <figure class="art-frame reveal d2"><div class="art a5">작품 사진<br>교체 예정</div><figcaption>기초소묘 · 수강 2개월</figcaption></figure>
       <figure class="art-frame reveal d3"><div class="art a6">작품 사진<br>교체 예정</div><figcaption>전시반 출품작</figcaption></figure>
     </div>
