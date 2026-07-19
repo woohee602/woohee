@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수강비 안내 | 아트그리고 화실</title>
+<meta name="description" content="아트그리고 화실 수강비 안내. 1·3·6개월권 정규반, 원데이클래스 요금.">
+
+<!-- 웹폰트 (메인 페이지와 동일) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+/* ============================================================
+   디자인 토큰 - 메인 페이지와 동일
+   ============================================================ */
+:root{
+  --bg:        #ffffff;
+  --bg-soft:   #f3f6f3;
+  --ink:       #222b26;
+  --ink-soft:  #66716b;
+  --accent:    #2f5d46;
+  --accent-deep:#234736;
+  --gold:      #8fb3a0;
+  --line:      #e4e9e5;
+  --white:     #ffffff;
+  --serif: 'Noto Serif KR', serif;
+  --sans:  'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  --side-pad: clamp(20px, 5vw, 48px);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  font-family:var(--sans);
+  background:var(--bg); color:var(--ink);
+  line-height:1.75; font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+.container{ max-width:1120px; margin:0 auto; padding:0 var(--side-pad); }
+
+/* 상단 바 */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1120px; margin:0 auto; padding:0 var(--side-pad);
+  height:60px; display:flex; align-items:center; justify-content:space-between;
+}
+.back-link{
+  display:flex; align-items:center; gap:8px;
+  font-size:14px; font-weight:600; color:var(--ink-soft); min-height:44px;
+}
+.back-link:hover{ color:var(--accent); }
+.topbar .logo{ font-family:var(--serif); font-size:17px; font-weight:600; }
+.topbar .logo em{ font-style:normal; color:var(--accent); }
+
+/* 페이지 헤더 */
+.page-head{ padding:130px 0 40px; }
+.page-head .eng{
+  font-size:12px; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--accent); font-weight:600; display:block; margin-bottom:12px;
+}
+.page-head h1{
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(30px,6vw,44px); line-height:1.4; margin-bottom:12px;
+}
+.page-head p{ color:var(--ink-soft); font-size:15px; max-width:560px; }
+
+/* 정규반 가격 카드 */
+.price-grid{ display:grid; gap:20px; padding-top:16px; }
+@media (min-width:820px){ .price-grid{ grid-template-columns:repeat(3,1fr); } }
+.price-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:36px 30px;
+  position:relative;
+}
+.price-card.featured{
+  border-color:var(--accent);
+  box-shadow:0 16px 40px rgba(47,93,70,.12);
+}
+.price-card .badge{
+  position:absolute; top:-12px; left:28px;
+  background:var(--accent); color:var(--white);
+  font-size:11.5px; font-weight:700;
+  padding:5px 14px; border-radius:99px;
+  letter-spacing:.06em;
+}
+.price-card h3{ font-family:var(--serif); font-size:19px; margin-bottom:8px; }
+.price-card .amount{
+  font-family:var(--serif);
+  font-size:32px; font-weight:600;
+  margin:12px 0 4px;
+}
+.price-card .amount small{ font-size:14px; font-weight:400; color:var(--ink-soft); }
+.price-card .note{ font-size:13px; color:var(--ink-soft); margin-bottom:20px; }
+.price-card ul{ display:grid; gap:9px; }
+.price-card li{
+  font-size:14px; color:var(--ink-soft);
+  padding-left:22px; position:relative;
+}
+.price-card li::before{
+  content:'✓'; position:absolute; left:0;
+  color:var(--accent); font-weight:700;
+}
+
+/* 원데이클래스 요금표 */
+.oneday-price{
+  margin-top:28px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:30px 28px;
+}
+.oneday-price h3{
+  font-family:var(--serif); font-size:19px; margin-bottom:18px;
+}
+.oneday-price h3 small{ font-size:13px; color:var(--ink-soft); font-family:var(--sans); font-weight:400; }
+.oneday-price li{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  padding:13px 2px;
+  font-size:14.5px;
+  border-bottom:1px dashed var(--line);
+}
+.oneday-price li:last-child{ border-bottom:none; }
+.oneday-price li span{ font-weight:600; min-width:110px; }
+.oneday-price li em{ font-style:normal; font-weight:700; color:var(--accent); }
+.oneday-price li small{ color:var(--ink-soft); font-size:12.5px; }
+
+.price-caption{
+  margin-top:28px; font-size:13px; color:var(--ink-soft);
+  text-align:center;
+}
+
+/* CTA */
+.cta-box{
+  background:var(--bg-soft);
+  border-radius:18px;
+  padding:40px 28px; text-align:center;
+  margin:48px 0 80px;
+}
+.cta-box h2{ font-family:var(--serif); font-weight:500; font-size:clamp(20px,4vw,26px); margin-bottom:8px; }
+.cta-box p{ color:var(--ink-soft); font-size:14.5px; margin-bottom:28px; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:15px 30px; border-radius:999px;
+  font-size:15px; font-weight:600; min-height:48px;
+  transition:transform .25s, background .25s;
+}
+.btn-primary{
+  background:var(--accent); color:var(--white);
+  box-shadow:0 8px 24px rgba(47,93,70,.28);
+}
+.btn-primary:hover{ background:var(--accent-deep); transform:translateY(-2px); }
+
+footer{
+  background:var(--ink); color:#93a49a;
+  padding:40px 0; font-size:13px; text-align:center;
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="back-link">← 홈으로 돌아가기</a>
+    <a href="index.html" class="logo">아트<em>그리고</em> 화실</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <span class="eng">Pricing</span>
+      <h1>수강비 안내</h1>
+      <p>정규반 수강료에는 캔버스와 수채화 전용지를 제외한
+      모든 재료비가 포함되어 있습니다. (특수재료 제외)
+      정규반은 유화부터 색연필까지 모든 재료를 자유롭게 경험할 수 있어요.</p>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>1개월권</h3>
+        <p class="amount">140,000원<small> / 4회</small></p>
+        <p class="note">가볍게 시작하고 싶다면</p>
+        <ul>
+          <li>4회 140,000원</li>
+          <li>8회 250,000원</li>
+          <li>모든 재료 자유롭게 이용</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <span class="badge">BEST ★</span>
+        <h3>3개월권</h3>
+        <p class="amount">390,000원<small> / 12회</small></p>
+        <p class="note">가장 많이 선택하는 구성</p>
+        <ul>
+          <li>12회 390,000원</li>
+          <li>24회 690,000원</li>
+          <li>모든 재료 자유롭게 이용</li>
+          <li>1개월권 대비 회당 부담 절감</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h3>6개월권</h3>
+        <p class="amount">720,000원<small> / 24회</small></p>
+        <p class="note">꾸준히, 가장 합리적으로</p>
+        <ul>
+          <li>24회 720,000원</li>
+          <li>48회 1,260,000원</li>
+          <li>모든 재료 자유롭게 이용</li>
+          <li>회당 최저가 구성</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 원데이클래스 요금 -->
+    <div class="oneday-price">
+      <h3>원데이클래스 <small>(2~3시간, 재료 포함)</small></h3>
+      <ul>
+        <li><span>유화</span><em>50,000원</em><small>20x20 · 26x16 · 26x18cm 중 택1</small></li>
+        <li><span>아크릴</span><em>39,000원</em><small>20x20cm</small></li>
+        <li><span>아크릴</span><em>49,000원</em><small>26x16 · 26x18cm</small></li>
+        <li><span>수채화</span><em>36,000원</em><small>5R · A5</small></li>
+        <li><span>반려동물 그리기</span><em>50,000원</em><small>20x20cm · 2일 전 사진 전송 필수</small></li>
+      </ul>
+    </div>
+    <p class="price-caption">* 위 수강료는 변동될 수 있습니다. 전시반 등 기타 과정은 상담 시 안내해 드립니다.</p>
+
+    <div class="cta-box">
+      <h2>어떤 구성이 맞을지 고민되시나요?</h2>
+      <p>부담 없이 문의 주세요. 원하시는 수업 방향에 맞춰 안내해 드립니다.</p>
+      <a href="tel:0507-1322-5279" class="btn btn-primary">📞 0507-1322-5279</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>아트그리고 화실 · 인천광역시 부평구 길주로547번길 5, 401호 · 0507-1322-5279</p>
+</footer>
+
+</body>
+</html>
