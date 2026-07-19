@@ -309,11 +309,10 @@ section{ padding: var(--section-pad) 0; }
   position:relative; overflow:hidden;
   max-width:380px; margin:0 auto;
 }
-.portrait::after{
-  content:'원장 사진';
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  color:rgba(255,255,255,.85);
+.portrait img{
+  width:100%; height:100%;
+  object-fit:cover;          /* 아치형 프레임에 꽉 차게 */
+  object-position:center top;
 }
 .greeting-quote{
   font-family:var(--serif);
@@ -767,7 +766,9 @@ footer p{ margin-bottom:4px; }
   <div class="container">
     <div class="greeting-grid">
       <div class="reveal">
-        <div class="portrait" role="img" aria-label="김우희 원장 사진"></div>
+        <div class="portrait">
+          <img src="원장사진.png" alt="아트그리고 화실 김우희 원장" loading="lazy">
+        </div>
       </div>
       <div>
         <span class="sec-label reveal">Greeting</span>
