@@ -72,6 +72,25 @@ ul{ list-style:none; }
 }
 .page-head p{ color:var(--ink-soft); font-size:15px; max-width:560px; }
 
+/* 횟수제 이용 안내 */
+.use-guide{
+  background:var(--bg-soft);
+  border-radius:18px;
+  padding:28px;
+  margin-bottom:36px;
+}
+.use-guide h3{ font-family:var(--serif); font-size:18px; margin-bottom:14px; }
+.use-guide ul{ display:grid; gap:8px; }
+@media (min-width:820px){ .use-guide ul{ grid-template-columns:1fr 1fr; gap:8px 24px; } }
+.use-guide li{
+  font-size:14px; color:var(--ink-soft);
+  padding-left:22px; position:relative;
+}
+.use-guide li::before{
+  content:'✓'; position:absolute; left:0;
+  color:var(--accent); font-weight:700;
+}
+
 /* 정규반 가격 카드 */
 .price-grid{ display:grid; gap:20px; padding-top:16px; }
 @media (min-width:820px){ .price-grid{ grid-template-columns:repeat(3,1fr); } }
@@ -180,9 +199,23 @@ footer{
     <div class="page-head">
       <span class="eng">Pricing</span>
       <h1>수강비 안내</h1>
-      <p>정규반 수강료에는 캔버스와 수채화 전용지를 제외한
-      모든 재료비가 포함되어 있습니다. (특수재료 제외)
-      정규반은 유화부터 색연필까지 모든 재료를 자유롭게 경험할 수 있어요.</p>
+      <p>아트그리고 화실은 <strong>횟수제</strong>(1회 = 2시간)로 운영됩니다.
+      구매하신 횟수를 화~토 중 원하는 요일·시간에 자유롭게 예약해서 사용하세요.
+      수강료에는 캔버스와 수채화 전용지를 제외한 모든 재료비가 포함되어 있고(특수재료 제외),
+      유화부터 색연필까지 모든 재료를 자유롭게 경험할 수 있어요.</p>
+    </div>
+
+    <!-- 횟수제 이용 안내 -->
+    <div class="use-guide">
+      <h3>횟수제, 이렇게 이용하세요</h3>
+      <ul>
+        <li>한 주 사용 횟수 제한이 없어요. 몰아서 쓰셔도 됩니다</li>
+        <li>하루 2회(4시간) 연속 수업도 가능해요</li>
+        <li>정해진 개월 수 안에 횟수를 사용해 주세요</li>
+        <li>정규반 등록 후 전용 앱으로 간편하게 예약</li>
+        <li>타임당 최대 6인 선착순 마감 — 예약은 서두르는 게 좋아요</li>
+        <li>수업 당일 취소는 불가능합니다</li>
+      </ul>
     </div>
 
     <div class="price-grid">
