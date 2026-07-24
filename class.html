@@ -116,6 +116,20 @@ h2{
 }
 .intro-text{ color:var(--ink-soft); font-size:15.5px; margin-bottom:12px; }
 
+/* 예시 작품 미니 갤러리 */
+.sample-works{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:12px; margin-top:24px;
+}
+.sample-works a{
+  display:block; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line);
+  aspect-ratio:4/5;
+  transition:transform .25s, box-shadow .25s;
+}
+.sample-works a:hover{ transform:translateY(-3px); box-shadow:0 12px 24px rgba(34,43,38,.1); }
+.sample-works img{ width:100%; height:100%; object-fit:cover; display:block; }
+
 /* 이런 분께 추천 */
 .for-list{ display:grid; gap:12px; margin-top:8px; }
 .for-list li{
@@ -211,6 +225,7 @@ footer{
       <span class="sec-label">About</span>
       <h2 id="introTitle"></h2>
       <div id="introBody"></div>
+      <div class="sample-works" id="sampleWorks"></div>
     </div>
   </section>
 
@@ -497,6 +512,23 @@ document.getElementById('heroSub').textContent = data.sub;
 document.getElementById('introTitle').textContent = data.introTitle;
 document.getElementById('introBody').innerHTML =
   data.intro.map(p => `<p class="intro-text">${p}</p>`).join('');
+
+/* 예시 작품 (작품갤러리 폴더에서 재료별 2~3장) */
+const SAMPLE_WORKS = {
+  oil:      ['20230506_180913.jpg','20240716_170536.jpg','20241127_175038.jpg'].map(f => '작품갤러리/유화/' + f),
+  acrylic:  ['20240822_122107.jpg','20240913_211634.jpg','20241023_205336.jpg'].map(f => '작품갤러리/아크릴화/' + f),
+  water:    ['20241030_145523.jpg','20240425_155051.jpg','20220714_161104.jpg'].map(f => '작품갤러리/수채화/' + f),
+  drawing:  ['20220405_151156.jpg','20240312_173236.jpg','20240312_173522.jpg'].map(f => '작품갤러리/기초소묘/' + f),
+  portrait: ['20230317_192518.jpg','20231109_182209.jpg','20240312_173753.jpg'].map(f => '작품갤러리/인물화/' + f),
+  pencil:   ['20220525_145316.jpg','20221213_180524.jpg','20231006_152711.jpg'].map(f => '작품갤러리/색연필/' + f),
+  oneday:   ['20240831_144956.jpg','20220722_195512.jpg','20240202_171643.jpg'].map(f => '작품갤러리/원데이클래스/' + f),
+  exhibit:  ['20240813_172618.jpg','20240813_173122.jpg','20240813_173138.jpg'].map(f => '작품갤러리/전시반/' + f)
+};
+const sampleKey = CLASSES[key] ? key : 'oil';
+document.getElementById('sampleWorks').innerHTML =
+  (SAMPLE_WORKS[sampleKey] || []).map((src, i) =>
+    `<a href="${src}" target="_blank" rel="noopener" aria-label="${data.title} 예시 작품 ${i+1}"><img src="${src}" alt="${data.title} 예시 작품" loading="lazy"></a>`
+  ).join('');
 
 /* 추천 대상 */
 document.getElementById('forList').innerHTML =
