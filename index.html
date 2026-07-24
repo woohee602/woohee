@@ -555,6 +555,23 @@ section{ padding: var(--section-pad) 0; }
   font-size:14.5px; color:#b5aca2; margin-bottom:20px;
 }
 
+/* 전시 오프닝 현장 사진 */
+.exhibit-photo{
+  margin:36px 0 8px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(228,233,229,.16);
+}
+.exhibit-photo img{
+  width:100%; display:block;
+  aspect-ratio:16/10; object-fit:cover;
+}
+.exhibit-photo figcaption{
+  padding:14px 18px;
+  font-size:13px; color:#b5aca2;
+  background:rgba(255,255,255,.04);
+}
+
 /* ============================================================
    11. 수강비 안내
    ============================================================ */
@@ -1094,6 +1111,12 @@ footer p{ margin-bottom:4px; }
       <div><span class="big">1~3기 개근 4명</span><p>매 전시마다 함께한 회원님들</p></div>
       <div><span class="big">만족도 최상</span><p>다녀가신 분들의 한결같은 후기</p></div>
     </div>
+
+    <!-- 실제 전시 오프닝 현장 사진 -->
+    <figure class="exhibit-photo reveal d3">
+      <img src="작품갤러리/전시반/KakaoTalk_20251011_160031766_04.jpg" alt="아트그리고 화실 회원 단체전 오프닝 현장" loading="lazy">
+      <figcaption>실제 전시 오프닝 현장 — 회원분들의 작품이 걸린 갤러리</figcaption>
+    </figure>
 
     <div class="exhibit-steps">
       <div class="ex-step reveal d1">
