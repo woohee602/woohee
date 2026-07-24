@@ -518,7 +518,42 @@ section{ padding: var(--section-pad) 0; }
 }
 .ex-step h3{ font-size:17px; font-weight:600; margin-bottom:6px; }
 .ex-step p{ font-size:14px; color:#a9bcb0; }
-.exhibit .btn{ margin-top:44px; }
+.exhibit .btn{ margin-top:8px; }
+
+/* 단체전 핵심 수치 */
+.exhibit-stats{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:16px; margin:36px 0 8px;
+  padding:28px 8px;
+  border-top:1px solid rgba(228,233,229,.16);
+  border-bottom:1px solid rgba(228,233,229,.16);
+}
+.exhibit-stats .big{
+  font-family:var(--serif); color:var(--gold);
+  font-size:clamp(18px,3vw,24px); display:block; margin-bottom:6px;
+}
+.exhibit-stats p{ font-size:12.5px; color:#b5aca2; }
+
+/* 전시 참여 후기 인용구 */
+.exhibit-quote{
+  margin:40px 0 20px;
+  padding:28px 30px;
+  background:rgba(255,255,255,.05);
+  border-left:3px solid var(--gold);
+  border-radius:4px;
+  font-family:var(--serif);
+  font-size:clamp(16px,2.6vw,19px);
+  line-height:1.8;
+  font-style:normal;
+}
+.exhibit-quote cite{
+  display:block; margin-top:14px;
+  font-family:var(--sans); font-size:13px;
+  color:#b5aca2; font-style:normal;
+}
+.exhibit-cta-desc{
+  font-size:14.5px; color:#b5aca2; margin-bottom:20px;
+}
 
 /* ============================================================
    11. 수강비 안내
@@ -1045,11 +1080,20 @@ footer p{ margin-bottom:4px; }
 <section class="exhibit" id="exhibit">
   <div class="container">
     <span class="sec-label reveal">Exhibition Class</span>
-    <h2 class="sec-title reveal d1">취미로 시작한 그림이<br>갤러리에 걸리는 순간</h2>
+    <h2 class="sec-title reveal d1">1년에 한 번,<br>내 그림이 진짜 전시가 되는 날</h2>
     <p class="sec-desc reveal d2">
-      아트그리고 화실만의 특별한 과정입니다. 취미 수강생도
-      전시라는 목표를 가지면 그림이 완전히 달라집니다.
+      아트그리고 화실은 <strong>매년 회원들과 함께 단체전을 엽니다.</strong>
+      취미로 그리던 그림이 액자에 걸리고, 초대장을 받은 가족과 친구가
+      전시장을 찾아오는 하루. 다녀가신 회원분들의 만족도가 가장 높은 프로그램이에요.
+      "내가 이런 걸 해냈다니" — 그 감각을 직접 느껴보세요.
     </p>
+
+    <!-- 단체전 핵심 수치 -->
+    <div class="exhibit-stats reveal d2">
+      <div><span class="big">연 1회</span><p>정기 단체전 개최</p></div>
+      <div><span class="big">전 회원</span><p>희망 시 누구나 참여 가능</p></div>
+      <div><span class="big">만족도 최상</span><p>다녀가신 분들의 한결같은 후기</p></div>
+    </div>
 
     <div class="exhibit-steps">
       <div class="ex-step reveal d1">
@@ -1070,7 +1114,18 @@ footer p{ margin-bottom:4px; }
       </div>
     </div>
 
-    <a href="#contact" class="btn btn-primary reveal">전시반 상담하기</a>
+    <!-- 지난 전시 참여 후기 -->
+    <blockquote class="exhibit-quote reveal">
+      “그림을 취미로 그린 지 1년 만에 제 이름으로 된 전시가 열렸어요.
+      가족들이 축하해주러 와줬을 때, 살면서 손에 꼽는 뿌듯한 순간이었습니다.”
+      <cite>— 전시반 참여 회원</cite>
+    </blockquote>
+
+    <p class="exhibit-cta-desc reveal">
+      "나도 언젠가 내 전시를 열어보고 싶다" — 막연했던 그 꿈,
+      아트그리고 화실에서는 매년 현실이 됩니다.
+    </p>
+    <a href="class.html?c=exhibit" class="btn btn-primary reveal">전시반 자세히 보기</a>
   </div>
 </section>
 
