@@ -774,29 +774,61 @@ footer p{ margin-bottom:4px; }
 
 /* ============================================================
    18. SNS 플로팅 버튼 (전 페이지 공통)
+   - 평소엔 토글 버튼 하나만 떠 있고, 탭하면 3개가 펼쳐짐
+   - 본문 텍스트를 계속 가리지 않도록 기본은 접힌 상태
    ============================================================ */
 .sns-float{
   position:fixed;
   right:16px;
   bottom:88px;               /* 모바일: 하단 상담 바 위로 */
   z-index:95;
-  display:flex; flex-direction:column;
+  display:flex; flex-direction:column-reverse;
+  align-items:center;
   gap:10px;
 }
 .sns-float a{
-  width:48px; height:48px;
+  width:44px; height:44px;
   border-radius:50%;
   background:var(--white);
   border:1px solid var(--line);
   box-shadow:0 8px 20px rgba(34,43,38,.14);
   display:flex; align-items:center; justify-content:center;
-  font-size:21px;
-  transition:transform .2s, box-shadow .2s;
+  font-size:19px;
+  transition:transform .25s, box-shadow .2s, opacity .25s;
 }
 .sns-float a:hover{ transform:translateY(-3px) scale(1.05); box-shadow:0 12px 26px rgba(34,43,38,.2); }
 .sns-float a.kakao{ background:#FEE500; border-color:#FEE500; }
 .sns-float a.insta{ background:radial-gradient(circle at 30% 110%, #fdf497, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-.sns-float a.naver{ background:#03C75A; border-color:#03C75A; color:#fff; font-family:var(--serif); font-weight:700; font-size:19px; }
+.sns-float a.naver{ background:#03C75A; border-color:#03C75A; color:#fff; font-family:var(--serif); font-weight:700; font-size:17px; }
+
+/* 토글 버튼 (항상 보임) */
+.sns-toggle{
+  width:50px; height:50px; border-radius:50%;
+  background:var(--accent); color:var(--white);
+  border:none; box-shadow:0 8px 20px rgba(34,43,38,.22);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; line-height:1;
+  transition:transform .25s, background .2s;
+}
+.sns-toggle.open{ transform:rotate(45deg); background:var(--accent-deep); }
+
+/* 접힌 상태: 링크 3개 숨김 (레이아웃에서 제거되지 않고 안 보이게만) */
+.sns-links{
+  display:flex; flex-direction:column; gap:10px;
+  align-items:center;
+}
+.sns-links a{
+  opacity:0; transform:translateY(8px) scale(.8);
+  pointer-events:none;
+}
+.sns-float.open .sns-links a{
+  opacity:1; transform:none;
+  pointer-events:auto;
+}
+.sns-links a:nth-child(1){ transition-delay:.03s; }
+.sns-links a:nth-child(2){ transition-delay:.06s; }
+.sns-links a:nth-child(3){ transition-delay:.09s; }
+
 @media (min-width:900px){
   .sns-float{ bottom:24px; }
 }
@@ -1359,10 +1391,13 @@ footer p{ margin-bottom:4px; }
 <!-- ============================================================
      SNS 플로팅 버튼
      ============================================================ -->
-<div class="sns-float">
-  <a href="http://pf.kakao.com/_gikBG/chat" target="_blank" rel="noopener" class="kakao" aria-label="카카오톡 채널 문의">💬</a>
-  <a href="https://www.instagram.com/artgrigo_in" target="_blank" rel="noopener" class="insta" aria-label="인스타그램 바로가기">📷</a>
-  <a href="https://blog.naver.com/dngml602" target="_blank" rel="noopener" class="naver" aria-label="네이버 블로그 바로가기">N</a>
+<div class="sns-float" id="snsFloat">
+  <button class="sns-toggle" id="snsToggle" aria-label="SNS 채널 열기" aria-expanded="false">＋</button>
+  <div class="sns-links">
+    <a href="http://pf.kakao.com/_gikBG/chat" target="_blank" rel="noopener" class="kakao" aria-label="카카오톡 채널 문의">💬</a>
+    <a href="https://www.instagram.com/artgrigo_in" target="_blank" rel="noopener" class="insta" aria-label="인스타그램 바로가기">📷</a>
+    <a href="https://blog.naver.com/dngml602" target="_blank" rel="noopener" class="naver" aria-label="네이버 블로그 바로가기">N</a>
+  </div>
 </div>
 
 <script>
@@ -1416,6 +1451,22 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     /* max-height를 실제 내용 높이로 지정해 부드러운 열림 효과 */
     answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0';
   });
+});
+
+/* 5) SNS 플로팅 버튼: 탭하면 펼쳐지고, 밖을 누르면 닫힘 */
+const snsFloat = document.getElementById('snsFloat');
+const snsToggle = document.getElementById('snsToggle');
+snsToggle.addEventListener('click', () => {
+  const isOpen = snsFloat.classList.toggle('open');
+  snsToggle.setAttribute('aria-expanded', isOpen);
+  snsToggle.textContent = isOpen ? '✕' : '＋';
+});
+document.addEventListener('click', (e) => {
+  if (snsFloat.classList.contains('open') && !snsFloat.contains(e.target)) {
+    snsFloat.classList.remove('open');
+    snsToggle.setAttribute('aria-expanded', false);
+    snsToggle.textContent = '＋';
+  }
 });
 </script>
 
