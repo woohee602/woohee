@@ -31,6 +31,7 @@
   --side-pad: clamp(20px, 5vw, 48px);
 }
 *{ margin:0; padding:0; box-sizing:border-box; }
+h1,h2,h3{ word-break:keep-all; overflow-wrap:break-word; }
 html{ scroll-behavior:smooth; }
 body{
   font-family:var(--sans);
@@ -113,6 +114,10 @@ h2{
   font-family:var(--serif); font-weight:500;
   font-size:clamp(22px,4.6vw,30px); line-height:1.5;
   margin-bottom:18px;
+}
+/* 작은 화면에서는 줄바꿈이 어색해지지 않도록 글자 크기를 더 낮춰줌 */
+@media (max-width:480px){
+  h2{ font-size:clamp(18px,5.6vw,24px); }
 }
 .intro-text{ color:var(--ink-soft); font-size:15.5px; margin-bottom:12px; }
 
