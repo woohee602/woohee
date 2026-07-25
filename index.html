@@ -70,7 +70,8 @@
    2. 리셋 & 공통
    ============================================================ */
 *{ margin:0; padding:0; box-sizing:border-box; }
-h1,h2,h3,blockquote{ word-break:keep-all; overflow-wrap:break-word; }
+/* 한글 단어 중간에서 끊기지 않도록 전체 적용 (공백에서만 줄바꿈) */
+body{ word-break:keep-all; overflow-wrap:break-word; }
 html{ scroll-behavior:smooth; }
 /* 고정 네비게이션 높이만큼 앵커 이동 보정 */
 [id]{ scroll-margin-top: 76px; }
