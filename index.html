@@ -240,6 +240,10 @@ section{ padding: var(--section-pad) 0; }
   letter-spacing:-0.015em;
   margin-bottom:28px;
 }
+/* 작은 화면에서는 줄바꿈이 어색해지지 않도록 글자 크기를 더 낮춰줌 */
+@media (max-width:480px){
+  .hero h1{ font-size: clamp(20px, 6.4vw, 28px); }
+}
 .hero h1 .accent{ color:var(--accent); }
 .hero p{
   font-size:clamp(15px,2.4vw,18px);
