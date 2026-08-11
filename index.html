@@ -304,25 +304,8 @@ section{ padding: var(--section-pad) 0; }
 .greeting-grid{
   display:grid; gap:40px;
   align-items:center;
-}
-/* 원장 초상 자리 (사진 교체 예정 플레이스홀더) */
-.portrait{
-  aspect-ratio: 4/5;
-  border-radius: 200px 200px 12px 12px; /* 아치형 프레임 - 갤러리 느낌 */
-  background:
-    linear-gradient(160deg, #b9cec2, #2f5d4655),
-    var(--bg-soft);
-  border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center;
-  color:var(--white);
-  font-family:var(--serif); font-size:15px; letter-spacing:.1em;
-  position:relative; overflow:hidden;
-  max-width:380px; margin:0 auto;
-}
-.portrait img{
-  width:100%; height:100%;
-  object-fit:cover;          /* 아치형 프레임에 꽉 차게 */
-  object-position:center top;
+  max-width:680px;
+  margin:0 auto;
 }
 .greeting-quote{
   font-family:var(--serif);
@@ -338,10 +321,6 @@ section{ padding: var(--section-pad) 0; }
   font-family:var(--serif); font-size:15px;
 }
 .greeting-sign strong{ font-size:18px; margin-left:6px; }
-
-@media (min-width:820px){
-  .greeting-grid{ grid-template-columns: 380px 1fr; gap:72px; }
-}
 
 /* ============================================================
    6. 화실 철학 - 3개 키워드
@@ -926,11 +905,6 @@ footer p{ margin-bottom:4px; }
 <section class="greeting" id="greeting">
   <div class="container">
     <div class="greeting-grid">
-      <div class="reveal">
-        <div class="portrait">
-          <img src="원장사진.png" alt="아트그리고 화실 김우희 원장" loading="lazy">
-        </div>
-      </div>
       <div>
         <span class="sec-label reveal">Greeting</span>
         <p class="greeting-quote reveal d1">
