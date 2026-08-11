@@ -237,15 +237,13 @@ section{ padding: var(--section-pad) 0; }
   max-width:1120px; margin:0 auto; padding:0 var(--side-pad); width:100%;
   display:grid; gap:56px; align-items:center;
 }
+.hero-text{ text-align:center; }
+.hero-btns{ justify-content:center; }
 @media (min-width:960px){
   .hero-inner{ grid-template-columns:1fr 1fr; gap:40px; }
   .hero-text{ text-align:left; }
-}
-.hero-text{ text-align:center; }
-@media (min-width:960px){
   .hero-btns{ justify-content:flex-start; }
 }
-.hero-btns{ justify-content:center; }
 
 /* ============================================================
    Hero 이미지 콜라주 (데스크톱에서만 노출)
