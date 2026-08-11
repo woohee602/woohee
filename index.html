@@ -299,6 +299,11 @@ section{ padding: var(--section-pad) 0; }
 @media (max-width:480px){
   .hero h1{ font-size: clamp(20px, 6.4vw, 28px); }
 }
+/* 데스크톱 2단 레이아웃에서는 텍스트 칸이 좁아지므로 "그림을 잘 그리는 곳이 아니라,"가
+   한 줄에 들어가도록 글자 크기를 낮춰줌 */
+@media (min-width:960px){
+  .hero h1{ font-size: clamp(24px, 3vw, 36px); }
+}
 .hero h1 .accent{ color:var(--accent); }
 .hero p{
   font-size:clamp(15px,2.4vw,18px);
